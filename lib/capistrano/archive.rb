@@ -1,0 +1,1 @@
+require 'capistrano/archive/scm'
