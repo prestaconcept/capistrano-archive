@@ -1,5 +1,7 @@
 # capistrano-archive
 
+[![Gem Version](https://badge.fury.io/rb/capistrano-archive.svg)](https://badge.fury.io/rb/capistrano-archive)
+
 This plugin adds a new scm to Capistrano 3 allowing deployment from an archive stored on the target server (s).
 
 ## Features
@@ -45,7 +47,16 @@ The tar is compressed with bzip as default but you can change that with `:archiv
 
 ### Upload
 
-As default the archive is sent in the `:tmp_dir` but you can change the destination using the `:archive_remote_path` variable. 
+As default the archive is sent in the `:tmp_dir` but you can change the destination using the `:archive_remote_path` variable.
+
+If you have multiple servers in same stage, you can upload the archive on some servers only using the `:archive_roles` variable.
+
+Using a shared storage for theses servers, you can upload the archive one time only in a shared location and use it on each server. For example like that :
+
+```
+  set :archive_roles, :upload
+  set :archive_remote_path, "/nas/..."
+```
 
 ### Workflow
 
